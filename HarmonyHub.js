@@ -187,9 +187,10 @@ function loadFeaturedAlbums() {
 function loadAllAlbums() {
   const container = document.getElementById("allAlbums");
   container.style.textAlign = "center"; // Center text in container
-  const sortedAlbums = [...albums].sort((a, b) => a.title.localeCompare(b.title));
+  const sortedAlbums = [...albums].sort((a, b) => a.artist.localeCompare(b.artist));
   sortedAlbums.forEach(album => container.appendChild(createAlbumCard(album)));
 }
+
 // =============================
 // Artist Popup
 // =============================
