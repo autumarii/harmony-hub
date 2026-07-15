@@ -1,106 +1,43 @@
 /* =============================
    Global Styles
 ============================= */
-
-/* Light Mode (default) */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fff176; /* soft yellow */
+  background-color: #fff176; /* yellow light mode */
   color: #333;
   transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center; /* center all text */
 }
 
-/* Dark Mode */
 body.dark-mode {
   background-color: #121212;
   color: #f0f0f0;
 }
 
-
 /* =============================
    Logo Styling
 ============================= */
-
 .logo {
   display: block;
   margin: 20px auto;
-  width: 25vw;          /* larger relative size */
-  max-width: 250px;     /* cap size */
-  min-width: 120px;     /* ensure readability */
+  width: 30vw;          /* larger relative size */
+  max-width: 300px;     /* cap size */
+  min-width: 150px;     /* ensure readability */
   height: auto;
   object-fit: contain;
-}
-
-/* Dark Mode logo tweak (optional invert if needed) */
-body.dark-mode .logo {
-  filter: brightness(0.9);
-}
-
-/* =============================
-   Album Card Styling
-============================= */
-
-.album-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 10px;
-  text-align: center;
-  transition: transform 0.2s ease, background 0.3s ease, color 0.3s ease;
-}
-
-.album-card:hover {
-  transform: translateY(-5px);
-}
-
-body.dark-mode .album-card {
-  background: #1e1e1e;
-  box-shadow: 0 2px 6px rgba(255,255,255,0.1);
-}
-
-.album-cover {
-  width: 20vw;
-  max-width: 200px;
-  min-width: 80px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.artist-link, .album-link {
-  display: block;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
-  margin: 5px 0;
-  transition: color 0.3s ease;
-}
-
-.artist-link:hover, .album-link:hover {
-  color: #0073e6;
-}
-
-body.dark-mode .artist-link,
-body.dark-mode .album-link {
-  color: #f0f0f0;
-}
-
-body.dark-mode .artist-link:hover,
-body.dark-mode .album-link:hover {
-  color: #66b2ff;
 }
 
 /* =============================
    Album Grid Layout
 ============================= */
-
 .album-grid {
   display: grid;
   gap: 20px;
   padding: 20px;
+  justify-items: center; /* center items in grid */
+  text-align: center;
 }
 
 /* Desktop & Tablet (≥768px) → 4 columns */
@@ -125,9 +62,50 @@ body.dark-mode .album-link:hover {
 }
 
 /* =============================
+   Album Card Styling
+============================= */
+.album-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.album-card:hover {
+  transform: translateY(-5px);
+}
+
+body.dark-mode .album-card {
+  background: #1e1e1e;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.1);
+}
+
+.album-cover {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.artist-link, .album-link {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+body.dark-mode .artist-link,
+body.dark-mode .album-link {
+  color: #f0f0f0;
+}
+
+/* =============================
    Popup Styling
 ============================= */
-
 .popup {
   display: none;
   position: fixed;
@@ -144,18 +122,16 @@ body.dark-mode .album-link:hover {
   border-radius: 10px;
   max-width: 500px;
   width: 90%;
-  text-align: center;
-  transition: background 0.3s ease, color 0.3s ease;
+  text-align: center; /* center popup text */
+}
+
+body.dark-mode .popup-content {
+  background: #1e1e1e;
+  color: #f0f0f0;
 }
 
 .popup img {
   max-width: 100%;
   border-radius: 8px;
   margin-bottom: 15px;
-}
-
-/* Dark Mode popup */
-body.dark-mode .popup-content {
-  background: #1e1e1e;
-  color: #f0f0f0;
 }

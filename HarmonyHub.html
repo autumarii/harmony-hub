@@ -1,163 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>HarmonyHub - Your Next Favorite Album</title>
-
-    <link rel="stylesheet" href="harmonyhub.css">
+  <meta charset="UTF-8">
+  <title>HarmonyHub</title>
+  <link rel="stylesheet" href="harmonyhub.css">
 </head>
-
 <body>
+  <!-- Logo -->
+  <img src="images/logo.png" alt="HarmonyHub Logo" class="logo">
 
-    <!-- Logo Section -->
-    <header>
-        <img 
-            src="harmonyhublogov1.png" 
-            alt="HarmonyHub Logo" 
-            class="logo"
-        >
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle">Toggle Dark Mode</button>
 
-        <h1>
-            Your Next Favorite Album is Here.
-        </h1>
-    </header>
+  <!-- Featured Albums -->
+  <h2>Featured Albums</h2>
+  <div class="album-grid" id="featuredAlbums"></div>
 
+  <!-- All Albums -->
+  <h2>All Albums</h2>
+  <div class="album-grid" id="allAlbums"></div>
 
-    <!-- Top 8 Albums -->
-    <section class="featured-section">
-
-        <h2>
-            Top 8 Albums
-        </h2>
-
-
-        <div id="featuredAlbums" class="album-grid">
-
-            <!-- JavaScript will insert albums here -->
-
-        </div>
-
-    </section>
-
-
-
-    <!-- Discover Albums -->
-    <section class="discover-section">
-
-        <h2>
-            Discover Albums
-        </h2>
-
-
-        <div id="allAlbums" class="album-grid">
-
-            <!-- JavaScript will insert albums here -->
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- Artist Popup -->
-    <div id="artistPopup" class="popup">
-
-        <div class="popup-content">
-
-            <span 
-                class="close"
-                onclick="closeArtistPopup()"
-            >
-                &times;
-            </span>
-
-
-            <h2 id="artistName"></h2>
-
-            <p id="artistInfo"></p>
-
-        </div>
-
+  <!-- Artist Popup -->
+  <div class="popup" id="artistPopup">
+    <div class="popup-content">
+      <h2 id="artistName"></h2>
+      <div id="artistInfo"></div>
+      <button onclick="closeArtistPopup()">Close</button>
     </div>
+  </div>
 
-
-
-    <!-- Album Popup -->
-    <div id="albumPopup" class="popup">
-
-        <div class="popup-content album-popup">
-
-            <span 
-                class="close"
-                onclick="closeAlbumPopup()"
-            >
-                &times;
-            </span>
-
-
-            <img 
-                id="popupCover"
-                class="popup-cover"
-                src=""
-                alt="Album Cover"
-            >
-
-
-            <h2 id="popupAlbumTitle"></h2>
-
-
-            <p>
-                <strong>Artist:</strong>
-                <span id="popupArtist"></span>
-            </p>
-
-
-            <p>
-                <strong>Genre:</strong>
-                <span id="popupGenre"></span>
-            </p>
-
-
-            <p>
-                <strong>Release Date:</strong>
-                <span id="popupDate"></span>
-            </p>
-
-
-            <p>
-                <strong>Slogan:</strong>
-                <span id="popupSlogan"></span>
-            </p>
-
-
-            <p>
-                <strong>Description:</strong>
-                <span id="popupDescription"></span>
-            </p>
-
-
-            <p>
-                <strong>Spotify Ranking:</strong>
-                <span id="popupRanking"></span>
-            </p>
-
-
-            <p>
-                <strong>Most Listened Song:</strong>
-                <span id="popupSong"></span>
-            </p>
-
-
-        </div>
-
+  <!-- Album Popup -->
+  <div class="popup" id="albumPopup">
+    <div class="popup-content">
+      <img id="popupCover" alt="Album Cover">
+      <h2 id="popupAlbumTitle"></h2>
+      <p id="popupArtist"></p>
+      <p id="popupGenre"></p>
+      <p id="popupDate"></p>
+      <p id="popupSlogan"></p>
+      <p id="popupDescription"></p>
+      <p id="popupRanking"></p>
+      <p id="popupSong"></p>
+      <button onclick="closeAlbumPopup()">Close</button>
     </div>
+  </div>
 
-
-
-<script src="harmonyhub.js"></script>
-
+  <!-- JavaScript -->
+  <script src="HarmonyHub.js"></script>
 </body>
 </html>

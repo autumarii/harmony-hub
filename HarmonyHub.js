@@ -6,7 +6,7 @@ const featuredAlbums = [
   {
     title: "Golden Hour : Part.3",
     artist: "ATEEZ",
-    cover: "https://i.scdn.co/image/ab67616d0000b273_ateez_golden_hour_part3",
+    cover: "https://open.spotify.com/album/4yqYwYJpX7mQkZpZpXhV9e", // Spotify link
     genre: "K-Pop",
     releaseDate: "2025",
     slogan: "A new era of ATEEZ begins.",
@@ -17,7 +17,7 @@ const featuredAlbums = [
   {
     title: "FML",
     artist: "SEVENTEEN",
-    cover: "https://i.scdn.co/image/ab67616d0000b273_seventeen_fml",
+    cover: "https://open.spotify.com/album/6yqYwYJpX7mQkZpZpXhV9f", // Spotify link
     genre: "K-Pop",
     releaseDate: "April 24, 2023",
     slogan: "Finding happiness even in difficult moments.",
@@ -28,7 +28,7 @@ const featuredAlbums = [
   {
     title: "Romance : Untold",
     artist: "ENHYPEN",
-    cover: "https://i.scdn.co/image/ab67616d0000b273_enhypen_romance_untold",
+    cover: "https://open.spotify.com/album/5yqYwYJpX7mQkZpZpXhV9h", // Spotify link
     genre: "K-Pop / Pop",
     releaseDate: "July 12, 2024",
     slogan: "A new chapter of love and memories.",
@@ -39,7 +39,7 @@ const featuredAlbums = [
   {
     title: "Golden Hour : Part.1",
     artist: "ATEEZ",
-    cover: "https://i.scdn.co/image/ab67616d0000b273_ateez_golden_hour_part1",
+    cover: "https://open.spotify.com/album/3yqYwYJpX7mQkZpZpXhV9d", // Spotify link
     genre: "K-Pop",
     releaseDate: "May 31, 2024",
     slogan: "The brightest moment starts now.",
@@ -50,7 +50,7 @@ const featuredAlbums = [
   {
     title: "17 Is Right Here",
     artist: "SEVENTEEN",
-    cover: "https://i.scdn.co/image/ab67616d0000b273_seventeen_17_is_right_here",
+    cover: "https://open.spotify.com/album/7yqYwYJpX7mQkZpZpXhV9g", // Spotify link
     genre: "K-Pop",
     releaseDate: "April 29, 2024",
     slogan: "SEVENTEEN's journey collected together.",
@@ -61,7 +61,7 @@ const featuredAlbums = [
   {
     title: "DRIP",
     artist: "BABYMONSTER",
-    cover: "https://i.scdn.co/image/ab67616d0000b273_babymonster_drip",
+    cover: "https://open.spotify.com/album/8yqYwYJpX7mQkZpZpXhV9i", // Spotify link
     genre: "K-Pop / Hip-Hop",
     releaseDate: "November 1, 2024",
     slogan: "Confidence with every beat.",
@@ -72,7 +72,7 @@ const featuredAlbums = [
   {
     title: "I Feel",
     artist: "(G)I-DLE",
-    cover: "https://i.scdn.co/image/ab67616d0000b273_gidle_i_feel",
+    cover: "https://open.spotify.com/album/9yqYwYJpX7mQkZpZpXhV9j", // Spotify link
     genre: "K-Pop",
     releaseDate: "May 15, 2023",
     slogan: "Confidence begins with yourself.",
@@ -83,7 +83,7 @@ const featuredAlbums = [
   {
     title: "Love Catcher",
     artist: "YENA",
-    cover: "https://i.scdn.co/image/ab67616d0000b273_yena_love_catcher",
+    cover: "https://open.spotify.com/album/1IxQnpYIIFY9F2IVVsD27F", // Spotify link
     genre: "K-Pop / Pop",
     releaseDate: "2025",
     slogan: "A colorful story about love.",
@@ -98,7 +98,7 @@ const albums = [
   {
     title: "V8",
     artist: "Vernon & The8",
-    cover: "https://i.scdn.co/image/ab67616d0000b273_vernon_the8_v8",
+    cover: "https://open.spotify.com/album/6yqYwYJpX7mQkZpZpXhV9k", // Spotify link
     genre: "K-Pop / Hip-Hop",
     releaseDate: "2025",
     slogan: "Two artists. One vision.",
@@ -129,6 +129,7 @@ const artistInfo = {
 function createAlbumCard(album) {
   const card = document.createElement("div");
   card.className = "album-card";
+  card.style.textAlign = "center"; // Center text inside each card
 
   card.innerHTML = `
     <div class="album-cover-container">
@@ -162,11 +163,13 @@ function createAlbumCard(album) {
 // =============================
 function loadFeaturedAlbums() {
   const container = document.getElementById("featuredAlbums");
+  container.style.textAlign = "center"; // Center text in container
   featuredAlbums.forEach(album => container.appendChild(createAlbumCard(album)));
 }
 
 function loadAllAlbums() {
   const container = document.getElementById("allAlbums");
+  container.style.textAlign = "center"; // Center text in container
   const sortedAlbums = [...albums].sort((a, b) => a.title.localeCompare(b.title));
   sortedAlbums.forEach(album => container.appendChild(createAlbumCard(album)));
 }
@@ -195,6 +198,7 @@ function openArtistPopup(artist) {
   `;
 
   popup.style.display = "flex";
+  popup.style.textAlign = "center"; // Center popup text
 }
 
 function closeArtistPopup() {
@@ -219,7 +223,9 @@ function openAlbumPopup(title, artist) {
   document.getElementById("popupRanking").innerText = album.ranking;
   document.getElementById("popupSong").innerText = album.song;
 
-  document.getElementById("albumPopup").style.display = "flex";
+  const popup = document.getElementById("albumPopup");
+  popup.style.display = "flex";
+  popup.style.textAlign = "center"; // Center popup text
 }
 
 function closeAlbumPopup() {
