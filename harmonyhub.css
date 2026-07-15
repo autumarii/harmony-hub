@@ -1,383 +1,160 @@
-/* =========================
-   General Page Styling
-========================= */
+/* =============================
+   Global Styles
+============================= */
 
 body {
-    margin: 0;
-    padding: 0;
-
-    background-color: #fce7bb;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    color: #5A4A45;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
-
-/* =========================
-   Header / Logo Section
-========================= */
-
-header {
-
-    text-align: center;
-
-    padding-top: 60px;
-
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
 }
 
+/* =============================
+   Logo Styling
+============================= */
 
 .logo {
-
-    width: 20px;
-
-    height: 20px;
-
-    object-fit: contain;
-
-    margin-bottom: 25px;
-
+  display: block;
+  margin: 20px auto;
+  width: 15vw;
+  max-width: 120px;
+  min-width: 40px;
+  height: auto;
+  object-fit: contain;
+  transition: filter 0.3s ease;
 }
 
-
-
-header h1 {
-
-    color: #5A4A45;
-
-    font-size: 32px;
-
-    font-weight: bold;
-
-    margin-bottom: 80px;
-
+/* Dark Mode logo tweak (optional invert if needed) */
+body.dark-mode .logo {
+  filter: brightness(0.9);
 }
 
-
-
-/* =========================
-   Section Titles
-========================= */
-
-section {
-
-    width: 90%;
-
-    margin: auto;
-
-}
-
-
-h2 {
-
-    text-align: center;
-
-    font-size: 30px;
-
-    color: #5A4A45;
-
-    margin-bottom: 35px;
-
-}
-
-
-
-/* =========================
-   Album Grid
-========================= */
-
-.album-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 45px;
-
-    margin-bottom: 80px;
-
-}
-
-
-
-/* =========================
-   Album Cards
-========================= */
+/* =============================
+   Album Card Styling
+============================= */
 
 .album-card {
-
-    text-align: center;
-
-    position: relative;
-
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s ease, background 0.3s ease, color 0.3s ease;
 }
 
-
-
-.album-cover-container {
-
-    position: relative;
-
-    width: 100%;
-
-    aspect-ratio: 1 / 1;
-
-    overflow: hidden;
-
+.album-card:hover {
+  transform: translateY(-5px);
 }
 
-
+body.dark-mode .album-card {
+  background: #1e1e1e;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.1);
+}
 
 .album-cover {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    border-radius: 12px;
-
-    cursor: pointer;
-
-    transition: transform 0.3s ease;
-
+  width: 20vw;
+  max-width: 200px;
+  min-width: 80px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-
-
-.album-cover:hover {
-
-    transform: scale(1.05);
-
+.artist-link, .album-link {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin: 5px 0;
+  transition: color 0.3s ease;
 }
 
-
-
-/* =========================
-   Ownership Checkbox
-========================= */
-
-.owner-checkbox {
-
-    position: absolute;
-
-    top: 10px;
-
-    left: 10px;
-
-    width: 22px;
-
-    height: 22px;
-
-    cursor: pointer;
-
-    z-index: 5;
-
+.artist-link:hover, .album-link:hover {
+  color: #0073e6;
 }
 
-
-
-/* =========================
-   Album Text
-========================= */
-
-.artist-link,
-.album-link {
-
-    display: block;
-
-    margin-top: 12px;
-
-    color: #5A4A45;
-
-    font-size: 17px;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
+body.dark-mode .artist-link,
+body.dark-mode .album-link {
+  color: #f0f0f0;
 }
 
-
-
-.artist-link:hover,
-.album-link:hover {
-
-    text-decoration: underline;
-
+body.dark-mode .artist-link:hover,
+body.dark-mode .album-link:hover {
+  color: #66b2ff;
 }
 
+/* =============================
+   Album Grid Layout
+============================= */
 
-
-.album-link {
-
-    margin-top: 8px;
-
-    font-weight: normal;
-
+.album-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
 }
 
+/* Desktop & Tablet (≥768px) → 4 columns */
+@media (min-width: 768px) {
+  .album-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
+/* Mobile (<768px) → 2 columns */
+@media (max-width: 767px) {
+  .album-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-/* =========================
-   Popup Windows
-========================= */
+/* Very small screens (<480px) → 1 column */
+@media (max-width: 480px) {
+  .album-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
+/* =============================
+   Popup Styling
+============================= */
 
 .popup {
-
-    display: none;
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-
-    background-color: rgba(0,0,0,0.45);
-
-
-    justify-content: center;
-
-    align-items: center;
-
-    z-index: 20;
-
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
 }
-
-
 
 .popup-content {
-
-    background-color: #fff6dc;
-
-    width: 450px;
-
-    max-height: 80vh;
-
-    overflow-y: auto;
-
-
-    padding: 35px;
-
-    border-radius: 18px;
-
-
-    text-align: center;
-
-    position: relative;
-
-
-    color: #5A4A45;
-
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-
-
-.close {
-
-    position: absolute;
-
-    right: 20px;
-
-    top: 15px;
-
-
-    font-size: 30px;
-
-    cursor: pointer;
-
+.popup img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
-
-
-.close:hover {
-
-    color: black;
-
-}
-
-
-
-
-/* =========================
-   Album Popup
-========================= */
-
-
-.album-popup {
-
-    width: 550px;
-
-}
-
-
-
-.popup-cover {
-
-    width: 250px;
-
-    height: 250px;
-
-    object-fit: cover;
-
-    border-radius: 12px;
-
-    margin-bottom: 20px;
-
-}
-
-
-
-.album-popup p {
-
-    text-align: left;
-
-    line-height: 1.5;
-
-}
-
-
-
-/* =========================
-   Responsive Design
-========================= */
-
-
-@media(max-width:900px){
-
-    .album-grid {
-
-        grid-template-columns: repeat(2,1fr);
-
-    }
-
-}
-
-
-
-@media(max-width:500px){
-
-    .album-grid {
-
-        grid-template-columns: repeat(1,1fr);
-
-    }
-
-
-    header h1 {
-
-        font-size:24px;
-
-    }
-
+/* Dark Mode popup */
+body.dark-mode .popup-content {
+  background: #1e1e1e;
+  color: #f0f0f0;
 }
