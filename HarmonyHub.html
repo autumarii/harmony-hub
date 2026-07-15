@@ -1,473 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Your Next Favorite Album is Here</title>
+    <title>HarmonyHub - Your Next Favorite Album</title>
 
-
-    <style>
-        body {
-
-            margin: 0;
-            background: #fce7bb;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #5A4A45;
-
-        }
-
-
-        /* Logo */
-
-        .logo {
-
-            display: block;
-            width: 180px;
-            height: 180px;
-            margin: 60px auto 25px;
-
-            object-fit: contain;
-
-        }
-
-
-        /* Header */
-
-        .description {
-
-            text-align: center;
-            font-size: 34px;
-            font-weight: bold;
-
-            color: #5A4A45;
-
-            margin-bottom: 70px;
-
-        }
-
-
-
-        /* Section Titles */
-
-        .section-title {
-
-            text-align: center;
-
-            font-size: 28px;
-
-            margin: 40px 0;
-
-            font-weight: bold;
-
-        }
-
-
-
-        /* Featured Album Slider */
-
-
-        .slider {
-
-            width: 90%;
-
-            margin: auto;
-
-            overflow: hidden;
-
-        }
-
-
-        .slides {
-
-            display: flex;
-
-            transition: 0.5s;
-
-        }
-
-
-        .slide {
-
-            min-width: 100%;
-
-            display: grid;
-
-            grid-template-columns: repeat(4, 1fr);
-
-            gap: 40px;
-
-        }
-
-
-
-        /* Album Cards */
-
-
-        .album-card {
-
-            text-align: center;
-
-        }
-
-
-        .cover {
-
-            width: 220px;
-
-            height: 220px;
-
-            margin: auto;
-
-            background: #d6bd89;
-
-            border-radius: 12px;
-
-            overflow: hidden;
-
-        }
-
-
-        .cover img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
-        }
-
-
-
-        .album-card a {
-
-            color: #5A4A45;
-
-            font-weight: bold;
-
-            text-decoration: underline;
-
-            cursor: pointer;
-
-        }
-
-
-
-        .artist-name {
-
-            margin-top: 15px;
-
-            font-size: 18px;
-
-        }
-
-
-
-        .album-name {
-
-            font-size: 17px;
-
-        }
-
-
-
-        /* Buttons */
-
-
-        .buttons {
-
-            text-align: center;
-
-            margin: 40px;
-
-        }
-
-
-        button {
-
-            background: #5A4A45;
-
-            color: white;
-
-            border: none;
-
-            padding: 12px 25px;
-
-            margin: 10px;
-
-            border-radius: 10px;
-
-            cursor: pointer;
-
-            font-size: 16px;
-
-        }
-
-
-
-
-
-        /* Similar Albums */
-
-
-        .similar-container {
-
-            width: 90%;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns: repeat(4, 1fr);
-
-            gap: 40px;
-
-        }
-
-
-
-
-
-        /* Popup */
-
-
-        .popup {
-
-            display: none;
-
-            position: fixed;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-
-            background: rgba(0, 0, 0, 0.5);
-
-
-            justify-content: center;
-
-            align-items: center;
-
-        }
-
-
-
-        .popup-box {
-
-            background: #fce7bb;
-
-            width: 450px;
-
-            padding: 30px;
-
-            border-radius: 20px;
-
-            text-align: center;
-
-            max-height: 80vh;
-
-            overflow: auto;
-
-        }
-
-
-
-        .popup-box img {
-
-            width: 250px;
-
-            height: 250px;
-
-            object-fit: cover;
-
-        }
-
-
-
-        .close {
-
-            float: right;
-
-            font-size: 25px;
-
-            cursor: pointer;
-
-        }
-
-
-
-
-
-        /* Mobile */
-
-
-        @media(max-width:900px) {
-
-
-            .slide {
-
-                grid-template-columns: repeat(2, 1fr);
-
-            }
-
-
-            .similar-container {
-
-                grid-template-columns: repeat(2, 1fr);
-
-            }
-
-
-        }
-
-
-
-        @media(max-width:500px) {
-
-
-            .slide {
-
-                grid-template-columns: repeat(1, 1fr);
-
-            }
-
-
-            .similar-container {
-
-                grid-template-columns: repeat(1, 1fr);
-
-            }
-
-
-        }
-    </style>
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
+    <!-- Logo Section -->
+    <header>
+        <img 
+            src="harmonyhublogov1.png" 
+            alt="HarmonyHub Logo" 
+            class="logo"
+        >
+
+        <h1>
+            Your Next Favorite Album is Here.
+        </h1>
+    </header>
 
 
-    <!-- LOGO -->
+    <!-- Top 8 Albums -->
+    <section class="featured-section">
 
-    <img class="logo" src="harmonyhublogov1.png">
-
-
-
-    <h1 class="description">
-        Your Next Favorite Album is Here.
-    </h1>
+        <h2>
+            Top 8 Albums
+        </h2>
 
 
+        <div id="featuredAlbums" class="album-grid">
 
+            <!-- JavaScript will insert albums here -->
 
-    <!-- FEATURED SECTION -->
+        </div>
 
-
-    <h2 class="section-title">
-        Top Album Collection
-    </h2>
+    </section>
 
 
 
-    <div class="slider">
+    <!-- Discover Albums -->
+    <section class="discover-section">
+
+        <h2>
+            Discover Albums
+        </h2>
 
 
-        <div class="slides" id="slides">
+        <div id="allAlbums" class="album-grid">
 
-
-
-            <!-- JavaScript will insert the 8 featured albums here -->
-
+            <!-- JavaScript will insert albums here -->
 
         </div>
 
 
-    </div>
+    </section>
 
 
 
-    <div class="buttons">
+    <!-- Artist Popup -->
+    <div id="artistPopup" class="popup">
 
-        <button onclick="changeSlide(-1)">
-            Previous
-        </button>
+        <div class="popup-content">
 
-
-        <button onclick="changeSlide(1)">
-            Next
-        </button>
-
-
-    </div>
-
-
-
-
-
-
-    <!-- SIMILAR ALBUM SECTION -->
-
-
-    <h2 class="section-title">
-        Discover More Albums
-    </h2>
-
-
-
-    <div class="similar-container" id="similarAlbums">
-
-        <!-- JavaScript adds all similar albums here -->
-
-    </div>
-
-
-
-
-
-
-
-    <!-- POPUP WINDOW -->
-
-
-    <div class="popup" id="popup">
-
-
-        <div class="popup-box">
-
-
-            <span class="close" onclick="closePopup()">
-                ×
+            <span 
+                class="close"
+                onclick="closeArtistPopup()"
+            >
+                &times;
             </span>
 
 
-            <div id="popupContent">
+            <h2 id="artistName"></h2>
 
-            </div>
+            <p id="artistInfo"></p>
 
+        </div>
+
+    </div>
+
+
+
+    <!-- Album Popup -->
+    <div id="albumPopup" class="popup">
+
+        <div class="popup-content album-popup">
+
+            <span 
+                class="close"
+                onclick="closeAlbumPopup()"
+            >
+                &times;
+            </span>
+
+
+            <img 
+                id="popupCover"
+                class="popup-cover"
+                src=""
+                alt="Album Cover"
+            >
+
+
+            <h2 id="popupAlbumTitle"></h2>
+
+
+            <p>
+                <strong>Artist:</strong>
+                <span id="popupArtist"></span>
+            </p>
+
+
+            <p>
+                <strong>Genre:</strong>
+                <span id="popupGenre"></span>
+            </p>
+
+
+            <p>
+                <strong>Release Date:</strong>
+                <span id="popupDate"></span>
+            </p>
+
+
+            <p>
+                <strong>Slogan:</strong>
+                <span id="popupSlogan"></span>
+            </p>
+
+
+            <p>
+                <strong>Description:</strong>
+                <span id="popupDescription"></span>
+            </p>
+
+
+            <p>
+                <strong>Spotify Ranking:</strong>
+                <span id="popupRanking"></span>
+            </p>
+
+
+            <p>
+                <strong>Most Listened Song:</strong>
+                <span id="popupSong"></span>
+            </p>
 
 
         </div>
 
-
     </div>
-    <input type="checkbox" class="owned-checkbox" onclick="markOwned(index)">
 
 
 
-
-    <script src="HarmonyHub.js"></script>
-
+<script src="script.js"></script>
 
 </body>
-
 </html>
