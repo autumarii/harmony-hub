@@ -2,11 +2,12 @@
    Global Styles
 ============================= */
 
+/* Light Mode (default) */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fafafa;
+  background-color: #fff176; /* soft yellow */
   color: #333;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -17,6 +18,7 @@ body.dark-mode {
   color: #f0f0f0;
 }
 
+
 /* =============================
    Logo Styling
 ============================= */
@@ -24,12 +26,11 @@ body.dark-mode {
 .logo {
   display: block;
   margin: 20px auto;
-  width: 15vw;
-  max-width: 120px;
-  min-width: 40px;
+  width: 25vw;          /* larger relative size */
+  max-width: 250px;     /* cap size */
+  min-width: 120px;     /* ensure readability */
   height: auto;
   object-fit: contain;
-  transition: filter 0.3s ease;
 }
 
 /* Dark Mode logo tweak (optional invert if needed) */
