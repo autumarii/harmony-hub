@@ -109,6 +109,23 @@ const albums = [
 ];
 
 // =============================
+// Album Search
+// =============================
+function setupAlbumSearch() {
+  const searchInput = document.getElementById("albumSearch");
+  searchInput.addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    const container = document.getElementById("allAlbums");
+    container.innerHTML = ""; // clear current albums
+    const filtered = albums.filter(album =>
+      album.title.toLowerCase().includes(query) ||
+      album.artist.toLowerCase().includes(query)
+    );
+    filtered.forEach(album => container.appendChild(createAlbumCard(album)));
+  });
+}
+
+// =============================
 // Artist Information
 // =============================
 const artistInfo = {
@@ -117,11 +134,11 @@ const artistInfo = {
   "ENHYPEN": "ENHYPEN is a K-Pop group known for their dark concepts, storytelling, and strong performances.",
   "(G)I-DLE": "(G)I-DLE is known for creative concepts, self-produced music, and unique styles.",
   "BABYMONSTER": "BABYMONSTER is a YG Entertainment girl group known for powerful vocals and performance skills.",
-  "YENA": "YENA is a solo artist known for bright concepts, energetic performances, and cheerful music.",
+  "YENA": "YENA is a solo artist known for her bright concepts, energetic performances, and cheerful music.",
   "YEONJUN": "YEONJUN is a member of TXT known for his dancing, vocals, and artistic creativity.",
   "Vernon": "Vernon is a SEVENTEEN member known for rap, creativity, and solo projects.",
   "The8": "The8 is a SEVENTEEN member known for dance, artistry, and solo music.",
-  "Vernon & The8": "A collaboration project combining both artists’ unique styles."
+  "Vernon & The8": "A collaboration project combining both Vernon and The8’s unique styles, which has been previously hinted at in The8's solo work."
 };
 // =============================
 // Album Card Creation
@@ -242,6 +259,36 @@ window.onclick = function (event) {
 };
 
 // =============================
+// Carousel for Featured Albums
+// =============================
+let currentSlide = 0;
+const albumsPerSlide = 4;
+
+function showFeaturedSlide() {
+  const container = document.getElementById("featuredAlbums");
+  container.innerHTML = "";
+  const start = currentSlide * albumsPerSlide;
+  const end = start + albumsPerSlide;
+  const visible = featuredAlbums.slice(start, end);
+  visible.forEach(album => container.appendChild(createAlbumCard(album)));
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  if (currentSlide > 0) {
+    currentSlide--;
+    showFeaturedSlide();
+  }
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if ((currentSlide + 1) * albumsPerSlide < featuredAlbums.length) {
+    currentSlide++;
+    showFeaturedSlide();
+  }
+});
+
+
+// =============================
 // Dark Mode Toggle
 // =============================
 document.addEventListener("DOMContentLoaded", () => {
@@ -253,6 +300,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Load albums on page ready
-  loadFeaturedAlbums();
+  showFeaturedSlide();
   loadAllAlbums();
 });

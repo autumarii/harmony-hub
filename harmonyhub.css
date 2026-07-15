@@ -71,10 +71,22 @@ body.dark-mode {
   padding: 10px;
   text-align: center;
   transition: transform 0.2s ease;
+   width: 220px;        /* fixed width */
+  height: 320px;       /* fixed height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .album-card:hover {
   transform: translateY(-5px);
+}
+
+.album-cover {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;   /* ensures consistent image scaling */
 }
 
 body.dark-mode .album-card {
@@ -82,13 +94,6 @@ body.dark-mode .album-card {
   box-shadow: 0 2px 6px rgba(255,255,255,0.1);
 }
 
-.album-cover {
-  width: 100%;
-  max-width: 220px;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
 
 .artist-link, .album-link {
   display: block;
