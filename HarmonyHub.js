@@ -65,7 +65,7 @@ const albums = [
         slogan: "Two perspectives. One sound.",
         description: "A creative collaboration between two SEVENTEEN members.",
         spotifyRank: "K-Pop Charts",
-        topSong: "V8"
+        topSong: "singasong"
     },
 
 
