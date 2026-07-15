@@ -71,7 +71,7 @@ const featuredAlbums = [
   },
   {
     title: "I Feel",
-    artist: "(G)I-DLE",
+    artist: "I-DLE",
     cover: "https://open.spotify.com/album/9yqYwYJpX7mQkZpZpXhV9j", // Spotify link
     genre: "K-Pop",
     releaseDate: "May 15, 2023",
@@ -132,7 +132,7 @@ const artistInfo = {
   "ATEEZ": "ATEEZ is an eight-member K-Pop group known for powerful performances, cinematic storytelling, and energetic music.",
   "SEVENTEEN": "SEVENTEEN is a self-producing K-Pop group famous for their teamwork, choreography, and diverse musical styles.",
   "ENHYPEN": "ENHYPEN is a K-Pop group known for their dark concepts, storytelling, and strong performances.",
-  "(G)I-DLE": "(G)I-DLE is known for creative concepts, self-produced music, and unique styles.",
+  "I-DLE": "I-DLE is known for creative concepts, self-produced music, and unique styles.",
   "BABYMONSTER": "BABYMONSTER is a YG Entertainment girl group known for powerful vocals and performance skills.",
   "YENA": "YENA is a solo artist known for her bright concepts, energetic performances, and cheerful music.",
   "YEONJUN": "YEONJUN is a member of TXT known for his dancing, vocals, and artistic creativity.",
