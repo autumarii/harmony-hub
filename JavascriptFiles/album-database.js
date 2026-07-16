@@ -40,6 +40,42 @@ const featuredAlbums = [
     song: "XO (Only If You Say Yes)"
   },
   {
+    title: "Dark Blood",
+    artist: "ENHYPEN",
+    cover: "https://cdn-images.dzcdn.net/images/cover/ad7832a7f9439bcb8d289d9d5acd8bb3/500x500-000000-80-0-0.jpg",
+    spotifyUrl: "https://open.spotify.com/search/Dark%20Blood%20ENHYPEN/albums",
+    genre: "K-Pop / Pop",
+    releaseDate: "May 22, 2023",
+    slogan: "A darker chapter in ENHYPEN's story.",
+    description: "A moody and atmospheric ENHYPEN release that fits their dark, cinematic style.",
+    ranking: "Fan-favorite ENHYPEN release",
+    song: "Dark Blood"
+  },
+  {
+    title: "Orange Blood",
+    artist: "ENHYPEN",
+    cover: "https://cdn-images.dzcdn.net/images/cover/1f9eb5e488109ac00a89a3663e168209/500x500-000000-80-0-0.jpg",
+    spotifyUrl: "https://open.spotify.com/search/Orange%20Blood%20ENHYPEN/albums",
+    genre: "K-Pop / Pop",
+    releaseDate: "November 17, 2023",
+    slogan: "A bold blend of color, energy, and emotion.",
+    description: "An energetic ENHYPEN album with vivid imagery and strong performance-driven hooks.",
+    ranking: "Popular ENHYPEN album listing",
+    song: "Orange Blood"
+  },
+  {
+    title: "Desire: Unleash",
+    artist: "ENHYPEN",
+    cover: "https://cdn-images.dzcdn.net/images/cover/9778d79fb4c926f7ad0a5ce2f3a8a2bb/500x500-000000-80-0-0.jpg",
+    spotifyUrl: "https://open.spotify.com/search/Desire%20Unleash%20ENHYPEN/albums",
+    genre: "K-Pop / Pop",
+    releaseDate: "June 5, 2025",
+    slogan: "Desire rises and takes center stage.",
+    description: "A sleek and expressive ENHYPEN release centered on passion, confidence, and momentum.",
+    ranking: "Trending ENHYPEN album addition",
+    song: "Desire: Unleash"
+  },
+  {
     title: "Golden Hour : Part.1",
     artist: "ATEEZ",
     cover: "https://cdn-images.dzcdn.net/images/cover/eba976dd0399610b87130e5c1446812b/500x500-000000-80-0-0.jpg",
@@ -109,7 +145,7 @@ const albums = [
     cover: "https://cdn-images.dzcdn.net/images/cover/b4ee0dc871ae59bef5e06cb1a0c7ce15/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/6yqYwYJpX7mQkZpZpXhV9k", // Spotify link
     genre: "K-Pop / Hip-Hop",
-    releaseDate: "2025",
+    releaseDate: "2026",
     slogan: "Two artists. One vision.",
     description: "A collaboration project combining unique styles from Vernon and The8.",
     ranking: "Fan favorite collaboration",
