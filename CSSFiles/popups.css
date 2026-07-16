@@ -37,7 +37,8 @@
   max-height: 80vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 }
 
 .owned-popup-header {
@@ -58,9 +59,9 @@
 }
 
 .owned-close-btn {
-  position: fixed;
-  top: 14px;
-  left: 14px;
+  position: absolute;
+  top: -14px;
+  left: -14px;
   width: 34px;
   height: 34px;
   border: none;
@@ -71,6 +72,7 @@
   line-height: 1;
   cursor: pointer;
   z-index: 20000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 .owned-albums-grid {
