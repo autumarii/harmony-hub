@@ -48,6 +48,17 @@
     <div class="popup-content owned-popup-content">
       <div class="owned-popup-header">
         <h2>OWNED ALBUMS</h2>
+        <div class="owned-popup-controls">
+          <input type="search" id="ownedAlbumSearch" placeholder="Search owned albums..." aria-label="Search owned albums">
+          <select id="ownedAlbumSort" aria-label="Sort owned albums">
+            <option value="artist">Artist A–Z</option>
+            <option value="title">Title A–Z</option>
+            <option value="release-newest">Release Date: Newest</option>
+            <option value="release-oldest">Release Date: Oldest</option>
+            <option value="owned-newest">Ownership Date: Newest</option>
+            <option value="owned-oldest">Ownership Date: Oldest</option>
+          </select>
+        </div>
       </div>
       <div id="ownedAlbumsList"></div>
     </div>

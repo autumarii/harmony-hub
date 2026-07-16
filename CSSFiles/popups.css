@@ -58,6 +58,24 @@
   text-align: center;
 }
 
+.owned-popup-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.owned-popup-controls input,
+.owned-popup-controls select {
+  padding: 7px 10px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  min-width: 140px;
+}
+
 .owned-close-btn {
   position: absolute;
   top: -14px;
@@ -125,9 +143,13 @@ body.dark-mode .popup-content {
     min-height: 400px;
   }
 
-  .owned-close-btn {
-    top: 8px;
-    left: 8px;
+  .owned-popup-controls {
+    justify-content: center;
+  }
+
+  .owned-popup-controls input,
+  .owned-popup-controls select {
+    width: 100%;
   }
 }
 

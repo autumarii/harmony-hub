@@ -17,17 +17,23 @@ function createAlbumCard(album) {
 
   // Checkbox ownership tracking
   const checkbox = card.querySelector(".owner-checkbox");
-  const savedAlbums = JSON.parse(localStorage.getItem("ownedAlbums")) || [];
-  checkbox.checked = savedAlbums.includes(checkbox.dataset.album);
+  const savedAlbums = getOwnedAlbumStorage();
+  checkbox.checked = savedAlbums.some(entry => entry.albumKey === checkbox.dataset.album);
 
   checkbox.addEventListener("change", function () {
-    let owned = JSON.parse(localStorage.getItem("ownedAlbums")) || [];
+    let owned = getOwnedAlbumStorage();
+    const albumKey = this.dataset.album;
+    const existingIndex = owned.findIndex(entry => entry.albumKey === albumKey);
+
     if (this.checked) {
-      owned = [...new Set([...owned, this.dataset.album])];
-    } else {
-      owned = owned.filter(item => item !== this.dataset.album);
+      if (existingIndex === -1) {
+        owned.push({ albumKey, ownedOn: Date.now() });
+      }
+    } else if (existingIndex !== -1) {
+      owned.splice(existingIndex, 1);
     }
-    localStorage.setItem("ownedAlbums", JSON.stringify(owned));
+
+    saveOwnedAlbumStorage(owned);
 
     if (typeof renderOwnedAlbumsPopup === "function") {
       renderOwnedAlbumsPopup();
