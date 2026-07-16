@@ -134,6 +134,78 @@ const featuredAlbumPool = [
     description: "YENA combines bright melodies with emotional storytelling.",
     ranking: "Popular soloist release",
     song: "Catch Catch"
+  },
+  {
+    title: "An Ode",
+    artist: "SEVENTEEN",
+    cover: "https://cdn-images.dzcdn.net/images/cover/431a73c8685d609b429132af38104dda/500x500-000000-80-0-0.jpg",
+    spotifyUrl: "https://open.spotify.com/search/An%20Ode%20SEVENTEEN/albums",
+    genre: "K-Pop / Pop",
+    releaseDate: "September 16, 2019",
+    slogan: "A timeless devotional release.",
+    description: "SEVENTEEN delivers a heartfelt and polished collection with a warm, nostalgic atmosphere.",
+    ranking: "Beloved SEVENTEEN era",
+    song: "An Ode"
+  },
+  {
+    title: "The Name Chapter: TEMPTATION",
+    artist: "Tomorrow X Together",
+    cover: "https://cdn-images.dzcdn.net/images/cover/3926d4612e07fb23f04fd520a5ec30aa/500x500-000000-80-0-0.jpg",
+    spotifyUrl: "https://open.spotify.com/search/Tomorrow%20X%20Together%20The%20Name%20Chapter%20TEMPTATION/albums",
+    genre: "K-Pop / Pop",
+    releaseDate: "January 18, 2023",
+    slogan: "The pull of curiosity and temptation.",
+    description: "TXT explores a darker and more mysterious sound with strong emotional storytelling.",
+    ranking: "Popular TXT album release",
+    song: "Sugar Rush Ride"
+  },
+  {
+    title: "The Chaos Chapter: FREEZE",
+    artist: "Tomorrow X Together",
+    cover: "https://cdn-images.dzcdn.net/images/cover/29762c42a990d69d49f9df6543b2c88b/500x500-000000-80-0-0.jpg",
+    spotifyUrl: "https://open.spotify.com/search/Tomorrow%20X%20Together%20The%20Chaos%20Chapter%20FREEZE/albums",
+    genre: "K-Pop / Pop",
+    releaseDate: "May 31, 2021",
+    slogan: "Frozen emotions can still move us.",
+    description: "TXT's emotionally provocative release highlights vulnerability, intensity, and bold performances.",
+    ranking: "TXT fan-favorite era",
+    song: "0x1=Lovesong (I Know I Love You)"
+  },
+  {
+    title: "Ready to Be",
+    artist: "TWICE",
+    cover: "https://cdn-images.dzcdn.net/images/cover/1709b9e5d10fe057f6cf89efb29619ed/500x500-000000-80-0-0.jpg",
+    spotifyUrl: "https://open.spotify.com/search/TWICE%20Ready%20to%20Be/albums",
+    genre: "K-Pop / Pop",
+    releaseDate: "March 10, 2023",
+    slogan: "Confidence and growth with every beat.",
+    description: "TWICE bring a polished, bright, and empowering sound to this highly acclaimed comeback.",
+    ranking: "One of TWICE's strongest releases",
+    song: "Set Me Free"
+  },
+  {
+    title: "Between 1&2",
+    artist: "TWICE",
+    cover: "https://cdn-images.dzcdn.net/images/cover/0824c80571e9cee63eaacc5a52a8e6d8/500x500-000000-80-0-0.jpg",
+    spotifyUrl: "https://open.spotify.com/search/TWICE%20Between%201%262/albums",
+    genre: "K-Pop / Pop",
+    releaseDate: "August 26, 2022",
+    slogan: "A sweet, fearless chapter.",
+    description: "TWICE continues to deliver charming hooks, emotional depth, and energetic performances.",
+    ranking: "Popular TWICE release",
+    song: "Talk That Talk"
+  },
+  {
+    title: "Shot Callers",
+    artist: "LNGSHOT",
+    cover: "https://cdn-images.dzcdn.net/images/cover/0aa091e30e5a9380c6a932a0a2b83a9a/500x500-000000-80-0-0.jpg",
+    spotifyUrl: "https://open.spotify.com/search/Shot%20Callers%20LNGSHOT/albums",
+    genre: "Memphis / Hip-Hop / R&B / Pop",
+    releaseDate: "January 13, 2026",
+    slogan: "A sharper, more commanding release.",
+    description: "Shot Callers is LNGSHOT's debut EP, led by the title track 'Moonwalkin'.",
+    ranking: "Notable LNGSHOT project",
+    song: "Moonwalkin'"
   }
 ];
 
@@ -183,6 +255,9 @@ const artistInfo = {
   "I-DLE": "I-DLE is known for creative concepts, self-produced music, and unique styles.",
   "BABYMONSTER": "BABYMONSTER is a YG Entertainment girl group known for powerful vocals and performance skills.",
   "YENA": "YENA is a solo artist known for her bright concepts, energetic performances, and cheerful music.",
+  "Tomorrow X Together": "Tomorrow X Together, also known as TXT, is a K-Pop group recognized for their storytelling, bold concepts, and emotionally resonant tracks.",
+  "TWICE": "TWICE is a globally loved K-Pop girl group known for bright concepts, strong vocals, and catchy pop hooks.",
+  "LNGSHOT": "LNGSHOT is a rising K-Pop act known for a bold, energetic identity and contemporary sound.",
   "YEONJUN": "YEONJUN is a member of TXT known for his dancing, vocals, and artistic creativity.",
   "Vernon": "Vernon is a SEVENTEEN member known for rap, creativity, and solo projects.",
   "The8": "The8 is a SEVENTEEN member known for dance, artistry, and solo music.",

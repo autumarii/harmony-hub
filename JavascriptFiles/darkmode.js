@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupAlbumSearch();
 
   const albumsNeedingCovers = albums.filter(album => !album.cover);
-  if (albumsNeedingCovers.length && location.protocol !== "file:") {
+  if (albumsNeedingCovers.length) {
     await fetchAlbumCovers(albumsNeedingCovers);
     showFeaturedSlide();
     loadAllAlbums();
