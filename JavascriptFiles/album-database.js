@@ -2,7 +2,7 @@
 // HarmonyHub Album Database
 // =============================
 
-const featuredAlbums = [
+const featuredAlbumPool = [
   {
     title: "Golden Hour : Part.3",
     artist: "ATEEZ",
@@ -138,7 +138,7 @@ const featuredAlbums = [
 ];
 
 const albums = [
-  ...featuredAlbums,
+  ...featuredAlbumPool,
   {
     title: "V8",
     artist: "Vernon & The8",
@@ -157,6 +157,25 @@ const albums = [
 // =============================
 // Artist Information
 // =============================
+function shuffleArray(items) {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const randomBuffer = new Uint32Array(1);
+    const randomSource = window.crypto || self.crypto;
+    if (randomSource && typeof randomSource.getRandomValues === "function") {
+      randomSource.getRandomValues(randomBuffer);
+    } else {
+      randomBuffer[0] = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+    }
+
+    const j = randomBuffer[0] % (i + 1);
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+const featuredAlbums = shuffleArray(featuredAlbumPool).slice(0, 8);
+
 const artistInfo = {
   "ATEEZ": "ATEEZ is an eight-member K-Pop group known for powerful performances, cinematic storytelling, and energetic music.",
   "SEVENTEEN": "SEVENTEEN is a self-producing K-Pop group famous for their teamwork, choreography, and diverse musical styles.",
