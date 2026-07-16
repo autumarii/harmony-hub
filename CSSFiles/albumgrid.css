@@ -2,17 +2,21 @@
    Album Grid Layout
 ============================= */
 .carousel {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 28px);
+  grid-auto-flow: column;
   justify-content: center;
+  align-items: center;
   gap: 0;
   margin: 0 auto 18px;
 }
 
 .carousel-btn {
-  flex: 0 0 auto;
-  margin-left: -1px;
-  margin-right: -1px;
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
 }
 
 .album-grid {
