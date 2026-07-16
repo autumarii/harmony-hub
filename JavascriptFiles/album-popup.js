@@ -19,8 +19,10 @@ function openAlbumPopup(title, artist) {
   const popup = document.getElementById("albumPopup");
   popup.style.display = "flex";
   popup.style.textAlign = "center"; // Center popup text
+  setPopupOpenState(true);
 }
 
 function closeAlbumPopup() {
   document.getElementById("albumPopup").style.display = "none";
+  setPopupOpenState(false);
 }

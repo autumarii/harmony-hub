@@ -1,6 +1,10 @@
 // =============================
-// Owned albums popup helpers
+// Popup state helpers
 // =============================
+function setPopupOpenState(isOpen) {
+  document.body.classList.toggle("popup-open", isOpen);
+}
+
 function getOwnedAlbumStorage() {
   try {
     return JSON.parse(localStorage.getItem("ownedAlbums")) || [];
@@ -33,11 +37,13 @@ function openOwnedAlbumsPopup() {
   renderOwnedAlbumsPopup();
   const popup = document.getElementById("ownedAlbumsPopup");
   if (popup) popup.style.display = "flex";
+  setPopupOpenState(true);
 }
 
 function closeOwnedAlbumsPopup() {
   const popup = document.getElementById("ownedAlbumsPopup");
   if (popup) popup.style.display = "none";
+  setPopupOpenState(false);
 }
 
 function setupOwnedAlbumsButton() {
@@ -53,6 +59,7 @@ function setupOwnedAlbumsButton() {
 window.onclick = function (event) {
   if (event.target.className === "popup") {
     event.target.style.display = "none";
+    setPopupOpenState(false);
   }
 };
 

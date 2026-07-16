@@ -24,8 +24,10 @@ function openArtistPopup(artist) {
 
   popup.style.display = "flex";
   popup.style.textAlign = "center"; // Center popup text
+  setPopupOpenState(true);
 }
 
 function closeArtistPopup() {
   document.getElementById("artistPopup").style.display = "none";
+  setPopupOpenState(false);
 }
