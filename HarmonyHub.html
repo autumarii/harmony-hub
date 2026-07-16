@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="CSSFiles/popups.css">
 </head>
 <body>
+  <button id="ownedAlbumsBtn" class="top-left-button">My Albums</button>
+
   <!-- Logo -->
   <img src="PNGs/harmonyhublogov1.png" alt="HarmonyHub Logo" class="logo">
 
@@ -38,6 +40,15 @@
       <h2 id="artistName"></h2>
       <div id="artistInfo"></div>
       <button onclick="closeArtistPopup()">Close</button>
+    </div>
+  </div>
+
+  <!-- Owned Albums Popup -->
+  <div class="popup" id="ownedAlbumsPopup">
+    <div class="popup-content">
+      <h2>My Albums</h2>
+      <div id="ownedAlbumsList"></div>
+      <button onclick="closeOwnedAlbumsPopup()">Close</button>
     </div>
   </div>
 

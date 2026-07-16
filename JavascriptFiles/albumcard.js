@@ -23,11 +23,15 @@ function createAlbumCard(album) {
   checkbox.addEventListener("change", function () {
     let owned = JSON.parse(localStorage.getItem("ownedAlbums")) || [];
     if (this.checked) {
-      owned.push(this.dataset.album);
+      owned = [...new Set([...owned, this.dataset.album])];
     } else {
       owned = owned.filter(item => item !== this.dataset.album);
     }
     localStorage.setItem("ownedAlbums", JSON.stringify(owned));
+
+    if (typeof renderOwnedAlbumsPopup === "function") {
+      renderOwnedAlbumsPopup();
+    }
   });
 
   return card;
