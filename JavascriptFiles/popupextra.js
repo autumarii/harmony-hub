@@ -3,6 +3,7 @@
 // =============================
 function setPopupOpenState(isOpen) {
   document.body.classList.toggle("popup-open", isOpen);
+  document.body.style.overflow = isOpen ? "hidden" : "";
 }
 
 function getOwnedAlbumStorage() {
@@ -38,6 +39,22 @@ function openOwnedAlbumsPopup() {
   const popup = document.getElementById("ownedAlbumsPopup");
   if (popup) popup.style.display = "flex";
   setPopupOpenState(true);
+}
+
+function openPopupById(popupId) {
+  const popup = document.getElementById(popupId);
+  if (popup) {
+    popup.style.display = "flex";
+    setPopupOpenState(true);
+  }
+}
+
+function closePopupById(popupId) {
+  const popup = document.getElementById(popupId);
+  if (popup) {
+    popup.style.display = "none";
+  }
+  setPopupOpenState(false);
 }
 
 function closeOwnedAlbumsPopup() {
