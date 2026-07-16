@@ -31,9 +31,102 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
+.owned-popup-content {
+  width: min(980px, 90vw);
+  min-height: 60vh;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.owned-popup-header {
+  position: relative;
+  z-index: 1;
+  background: inherit;
+  padding: 16px 12px 10px 12px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.owned-popup-header h2 {
+  margin: 0;
+  padding-top: 4px;
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.owned-close-btn {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #1f1f1f;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 20000;
+}
+
+.owned-albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.owned-album-card {
+  background: rgba(0,0,0,0.04);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+.owned-album-cover {
+  width: 100%;
+  max-width: 150px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+.owned-album-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.owned-album-artist {
+  font-size: 0.86rem;
+  font-weight: bold;
+}
+
+.owned-album-title {
+  font-size: 0.82rem;
+}
+
 body.dark-mode .popup-content {
   background: #1e1e1e;
   color: #f0f0f0;
+}
+
+@media (max-width: 767px) {
+  .owned-popup-content {
+    width: min(320px, 84vw);
+    min-height: 400px;
+  }
+
+  .owned-close-btn {
+    top: 8px;
+    left: 8px;
+  }
 }
 
 body.popup-open .owner-checkbox {
@@ -55,21 +148,15 @@ body.popup-open .owner-checkbox {
   font-weight: 600;
 }
 
-#ownedAlbumsList ul {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 16px;
-  text-align: left;
+#ownedAlbumsList {
+  width: 100%;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 4px;
 }
 
-#ownedAlbumsList li {
-  margin: 8px 0;
-  padding-bottom: 6px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-body.dark-mode #ownedAlbumsList li {
-  border-bottom-color: rgba(255,255,255,0.15);
+body.dark-mode .owned-album-card {
+  background: rgba(255,255,255,0.06);
 }
 
 .popup-content h2 {

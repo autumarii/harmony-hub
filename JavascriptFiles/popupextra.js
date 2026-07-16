@@ -20,16 +20,19 @@ function renderOwnedAlbumsPopup() {
 
   const owned = getOwnedAlbumStorage();
   const ownedAlbums = owned
-    .map(key => {
-      const [artist, ...titleParts] = key.split("-");
-      const title = titleParts.join("-");
-      const album = albums.find(item => item.artist === artist && item.title === title);
-      return album ? `${album.artist} — ${album.title}` : key;
-    })
+    .map(key => albums.find(album => key === `${album.artist}-${album.title}`))
     .filter(Boolean);
 
   list.innerHTML = ownedAlbums.length
-    ? `<ul>${ownedAlbums.map(album => `<li>${album}</li>`).join("")}</ul>`
+    ? `<div class="owned-albums-grid">${ownedAlbums.map(album => `
+        <div class="owned-album-card">
+          <img src="${album.cover || COVER_PLACEHOLDER}" alt="${album.title}" class="owned-album-cover">
+          <div class="owned-album-meta">
+            <div class="owned-album-artist">${album.artist}</div>
+            <div class="owned-album-title">${album.title}</div>
+          </div>
+        </div>
+      `).join("")}</div>`
     : "<p>You have no owned albums saved yet.</p>";
 }
 
