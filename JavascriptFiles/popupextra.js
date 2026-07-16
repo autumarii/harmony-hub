@@ -3,7 +3,6 @@
 // =============================
 function setPopupOpenState(isOpen) {
   document.body.classList.toggle("popup-open", isOpen);
-  document.body.style.overflow = isOpen ? "hidden" : "";
 }
 
 function getOwnedAlbumStorage() {
