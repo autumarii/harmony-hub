@@ -6,7 +6,7 @@ const featuredAlbums = [
   {
     title: "Golden Hour : Part.3",
     artist: "ATEEZ",
-    cover: "https://open.spotify.com/album/4yqYwYJpX7mQkZpZpXhV9e", // Spotify link
+    spotifyUrl: "https://open.spotify.com/album/4yqYwYJpX7mQkZpZpXhV9e",
     genre: "K-Pop",
     releaseDate: "2025",
     slogan: "A new era of ATEEZ begins.",
@@ -17,7 +17,7 @@ const featuredAlbums = [
   {
     title: "FML",
     artist: "SEVENTEEN",
-    cover: "https://open.spotify.com/album/6yqYwYJpX7mQkZpZpXhV9f", // Spotify link
+    spotifyUrl: "https://open.spotify.com/album/6yqYwYJpX7mQkZpZpXhV9f", // Spotify link
     genre: "K-Pop",
     releaseDate: "April 24, 2023",
     slogan: "Finding happiness even in difficult moments.",
@@ -28,7 +28,7 @@ const featuredAlbums = [
   {
     title: "Romance : Untold",
     artist: "ENHYPEN",
-    cover: "https://open.spotify.com/album/5yqYwYJpX7mQkZpZpXhV9h", // Spotify link
+    spotifyUrl: "https://open.spotify.com/album/5yqYwYJpX7mQkZpZpXhV9h", // Spotify link
     genre: "K-Pop / Pop",
     releaseDate: "July 12, 2024",
     slogan: "A new chapter of love and memories.",
@@ -39,7 +39,7 @@ const featuredAlbums = [
   {
     title: "Golden Hour : Part.1",
     artist: "ATEEZ",
-    cover: "https://open.spotify.com/album/3yqYwYJpX7mQkZpZpXhV9d", // Spotify link
+    spotifyUrl: "https://open.spotify.com/album/3yqYwYJpX7mQkZpZpXhV9d", // Spotify link
     genre: "K-Pop",
     releaseDate: "May 31, 2024",
     slogan: "The brightest moment starts now.",
@@ -50,7 +50,7 @@ const featuredAlbums = [
   {
     title: "17 Is Right Here",
     artist: "SEVENTEEN",
-    cover: "https://open.spotify.com/album/7yqYwYJpX7mQkZpZpXhV9g", // Spotify link
+    spotifyUrl: "https://open.spotify.com/album/7yqYwYJpX7mQkZpZpXhV9g", // Spotify link
     genre: "K-Pop",
     releaseDate: "April 29, 2024",
     slogan: "SEVENTEEN's journey collected together.",
@@ -61,7 +61,7 @@ const featuredAlbums = [
   {
     title: "DRIP",
     artist: "BABYMONSTER",
-    cover: "https://open.spotify.com/album/8yqYwYJpX7mQkZpZpXhV9i", // Spotify link
+    spotifyUrl: "https://open.spotify.com/album/8yqYwYJpX7mQkZpZpXhV9i", // Spotify link
     genre: "K-Pop / Hip-Hop",
     releaseDate: "November 1, 2024",
     slogan: "Confidence with every beat.",
@@ -72,7 +72,7 @@ const featuredAlbums = [
   {
     title: "I Feel",
     artist: "I-DLE",
-    cover: "https://open.spotify.com/album/9yqYwYJpX7mQkZpZpXhV9j", // Spotify link
+    spotifyUrl: "https://open.spotify.com/album/9yqYwYJpX7mQkZpZpXhV9j", // Spotify link
     genre: "K-Pop",
     releaseDate: "May 15, 2023",
     slogan: "Confidence begins with yourself.",
@@ -83,7 +83,7 @@ const featuredAlbums = [
   {
     title: "Love Catcher",
     artist: "YENA",
-    cover: "https://open.spotify.com/album/1IxQnpYIIFY9F2IVVsD27F", // Spotify link
+    spotifyUrl: "https://open.spotify.com/album/1IxQnpYIIFY9F2IVVsD27F", // Spotify link
     genre: "K-Pop / Pop",
     releaseDate: "2025",
     slogan: "A colorful story about love.",
@@ -98,7 +98,7 @@ const albums = [
   {
     title: "V8",
     artist: "Vernon & The8",
-    cover: "https://open.spotify.com/album/6yqYwYJpX7mQkZpZpXhV9k", // Spotify link
+    spotifyUrl: "https://open.spotify.com/album/6yqYwYJpX7mQkZpZpXhV9k", // Spotify link
     genre: "K-Pop / Hip-Hop",
     releaseDate: "2025",
     slogan: "Two artists. One vision.",
@@ -107,6 +107,63 @@ const albums = [
     song: "Singasong"
   }
 ];
+
+// =============================
+// Album Cover API (Deezer)
+// =============================
+const COVER_PLACEHOLDER =
+  "data:image/svg+xml," +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250"><rect width="100%" height="100%" fill="#ddd"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#888" font-family="sans-serif" font-size="14">No cover</text></svg>'
+  );
+
+function normalizeAlbumText(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function scoreAlbumMatch(result, album) {
+  const resultTitle = normalizeAlbumText(result.title);
+  const resultArtist = normalizeAlbumText(result.artist.name);
+  const albumTitle = normalizeAlbumText(album.title);
+  const albumArtist = normalizeAlbumText(album.artist);
+
+  let score = 0;
+  if (resultArtist.includes(albumArtist) || albumArtist.includes(resultArtist)) score += 2;
+  if (resultTitle.includes(albumTitle) || albumTitle.includes(resultTitle)) score += 3;
+  return score;
+}
+
+function findBestAlbumMatch(results, album) {
+  if (!results?.length) return null;
+  return results
+    .map(result => ({ result, score: scoreAlbumMatch(result, album) }))
+    .sort((a, b) => b.score - a.score)[0].result;
+}
+
+async function fetchCoverForAlbum(album) {
+  const query = encodeURIComponent(`${album.artist} ${album.title}`);
+  try {
+    const response = await fetch(`https://api.deezer.com/search/album?q=${query}&limit=5`);
+    if (!response.ok) throw new Error(`Deezer API error: ${response.status}`);
+
+    const data = await response.json();
+    const match = findBestAlbumMatch(data.data, album);
+    if (match) {
+      album.cover = match.cover_big || match.cover_medium;
+    }
+  } catch (error) {
+    console.warn(`Could not fetch cover for "${album.title}" by ${album.artist}:`, error);
+  }
+}
+
+async function fetchAlbumCovers(albumList) {
+  await Promise.all(albumList.map(fetchCoverForAlbum));
+  return albumList;
+}
 
 // =============================
 // Album Search
@@ -151,7 +208,7 @@ function createAlbumCard(album) {
   card.innerHTML = `
     <div class="album-cover-container">
       <input type="checkbox" class="owner-checkbox" data-album="${album.artist}-${album.title}">
-      <img src="${album.cover}" alt="${album.title}" class="album-cover">
+      <img src="${album.cover || COVER_PLACEHOLDER}" alt="${album.title}" class="album-cover">
     </div>
     <a class="artist-link" onclick="openArtistPopup('${album.artist}')">${album.artist}</a>
     <a class="album-link" onclick="openAlbumPopup('${album.title}','${album.artist}')">${album.title}</a>
@@ -230,7 +287,7 @@ function openAlbumPopup(title, artist) {
   const album = albums.find(item => item.title === title && item.artist === artist);
   if (!album) return;
 
-  document.getElementById("popupCover").src = album.cover;
+  document.getElementById("popupCover").src = album.cover || COVER_PLACEHOLDER;
   document.getElementById("popupAlbumTitle").innerText = album.title;
   document.getElementById("popupArtist").innerHTML =
     `<a href="https://open.spotify.com/search/${encodeURIComponent(album.artist)}" target="_blank">${album.artist}</a>`;
@@ -292,7 +349,7 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 // =============================
 // Dark Mode Toggle
 // =============================
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const toggleBtn = document.getElementById("darkModeToggle");
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
@@ -300,7 +357,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Load albums on page ready
+  await fetchAlbumCovers(albums);
   showFeaturedSlide();
   loadAllAlbums();
+  setupAlbumSearch();
 });
