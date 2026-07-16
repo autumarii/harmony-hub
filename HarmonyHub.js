@@ -89,7 +89,7 @@ const featuredAlbums = [
     slogan: "A colorful story about love.",
     description: "YENA combines bright melodies with emotional storytelling.",
     ranking: "Popular soloist release",
-    song: "Love Catcher"
+    song: "Catch Catch"
   }
 ];
 
