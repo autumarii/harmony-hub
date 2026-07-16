@@ -6,6 +6,7 @@ const featuredAlbums = [
   {
     title: "Golden Hour : Part.3",
     artist: "ATEEZ",
+    cover: "https://cdn-images.dzcdn.net/images/cover/28e2879642c67832e1422a629b047767/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/4yqYwYJpX7mQkZpZpXhV9e",
     genre: "K-Pop",
     releaseDate: "2025",
@@ -17,6 +18,7 @@ const featuredAlbums = [
   {
     title: "FML",
     artist: "SEVENTEEN",
+    cover: "https://cdn-images.dzcdn.net/images/cover/e6c7d4855dfd042ea1d7cf18057c271c/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/6yqYwYJpX7mQkZpZpXhV9f", // Spotify link
     genre: "K-Pop",
     releaseDate: "April 24, 2023",
@@ -28,6 +30,7 @@ const featuredAlbums = [
   {
     title: "Romance : Untold",
     artist: "ENHYPEN",
+    cover: "https://cdn-images.dzcdn.net/images/cover/0e5413b9e2063705bd8d02ab44023ba5/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/5yqYwYJpX7mQkZpZpXhV9h", // Spotify link
     genre: "K-Pop / Pop",
     releaseDate: "July 12, 2024",
@@ -39,6 +42,7 @@ const featuredAlbums = [
   {
     title: "Golden Hour : Part.1",
     artist: "ATEEZ",
+    cover: "https://cdn-images.dzcdn.net/images/cover/eba976dd0399610b87130e5c1446812b/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/3yqYwYJpX7mQkZpZpXhV9d", // Spotify link
     genre: "K-Pop",
     releaseDate: "May 31, 2024",
@@ -50,6 +54,7 @@ const featuredAlbums = [
   {
     title: "17 Is Right Here",
     artist: "SEVENTEEN",
+    cover: "https://cdn-images.dzcdn.net/images/cover/5206c980b9bb49ecd4940252057915eb/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/7yqYwYJpX7mQkZpZpXhV9g", // Spotify link
     genre: "K-Pop",
     releaseDate: "April 29, 2024",
@@ -61,6 +66,7 @@ const featuredAlbums = [
   {
     title: "DRIP",
     artist: "BABYMONSTER",
+    cover: "https://cdn-images.dzcdn.net/images/cover/c49d4419cfa49e7939a3d1f3ec3a0605/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/8yqYwYJpX7mQkZpZpXhV9i", // Spotify link
     genre: "K-Pop / Hip-Hop",
     releaseDate: "November 1, 2024",
@@ -72,6 +78,7 @@ const featuredAlbums = [
   {
     title: "I Feel",
     artist: "I-DLE",
+    cover: "https://cdn-images.dzcdn.net/images/cover/4581c816426c276adb0b30ce7fdf8ba8/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/9yqYwYJpX7mQkZpZpXhV9j", // Spotify link
     genre: "K-Pop",
     releaseDate: "May 15, 2023",
@@ -83,6 +90,7 @@ const featuredAlbums = [
   {
     title: "Love Catcher",
     artist: "YENA",
+    cover: "https://cdn-images.dzcdn.net/images/cover/2c3b45b1c8f471b732bcde8ba3c9e8c2/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/1IxQnpYIIFY9F2IVVsD27F", // Spotify link
     genre: "K-Pop / Pop",
     releaseDate: "2025",
@@ -98,6 +106,7 @@ const albums = [
   {
     title: "V8",
     artist: "Vernon & The8",
+    cover: "https://cdn-images.dzcdn.net/images/cover/b4ee0dc871ae59bef5e06cb1a0c7ce15/500x500-000000-80-0-0.jpg",
     spotifyUrl: "https://open.spotify.com/album/6yqYwYJpX7mQkZpZpXhV9k", // Spotify link
     genre: "K-Pop / Hip-Hop",
     releaseDate: "2025",
@@ -144,17 +153,39 @@ function findBestAlbumMatch(results, album) {
     .sort((a, b) => b.score - a.score)[0].result;
 }
 
-async function fetchCoverForAlbum(album) {
+async function fetchCoverFromDeezer(album) {
   const query = encodeURIComponent(`${album.artist} ${album.title}`);
-  try {
-    const response = await fetch(`https://api.deezer.com/search/album?q=${query}&limit=5`);
-    if (!response.ok) throw new Error(`Deezer API error: ${response.status}`);
+  const response = await fetch(`https://api.deezer.com/search/album?q=${query}&limit=5`);
+  if (!response.ok) throw new Error(`Deezer API error: ${response.status}`);
 
-    const data = await response.json();
-    const match = findBestAlbumMatch(data.data, album);
-    if (match) {
-      album.cover = match.cover_big || match.cover_medium;
-    }
+  const data = await response.json();
+  const match = findBestAlbumMatch(data.data, album);
+  return match?.cover_big || match?.cover_medium || null;
+}
+
+async function fetchCoverFromItunes(album) {
+  const query = encodeURIComponent(`${album.artist} ${album.title}`);
+  const response = await fetch(`https://itunes.apple.com/search?term=${query}&entity=album&limit=5`);
+  if (!response.ok) throw new Error(`iTunes API error: ${response.status}`);
+
+  const data = await response.json();
+  const results = (data.results || [])
+    .filter(result => result.wrapperType === "collection")
+    .map(result => ({
+      title: result.collectionName,
+      artist: { name: result.artistName },
+      cover_big: result.artworkUrl100?.replace("100x100bb", "500x500bb")
+    }));
+
+  const match = findBestAlbumMatch(results, album);
+  return match?.cover_big || null;
+}
+
+async function fetchCoverForAlbum(album) {
+  if (album.cover) return;
+
+  try {
+    album.cover = await fetchCoverFromDeezer(album) || await fetchCoverFromItunes(album);
   } catch (error) {
     console.warn(`Could not fetch cover for "${album.title}" by ${album.artist}:`, error);
   }
@@ -365,8 +396,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  await fetchAlbumCovers(albums);
   showFeaturedSlide();
   loadAllAlbums();
   setupAlbumSearch();
+
+  const albumsNeedingCovers = albums.filter(album => !album.cover);
+  if (albumsNeedingCovers.length && location.protocol !== "file:") {
+    await fetchAlbumCovers(albumsNeedingCovers);
+    showFeaturedSlide();
+    loadAllAlbums();
+  }
 });
