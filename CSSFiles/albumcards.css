@@ -8,22 +8,37 @@
   padding: 10px;
   text-align: center;
   transition: transform 0.2s ease;
-   width: 220px;        /* fixed width */
-  height: 320px;       /* fixed height */
+  width: 220px;
+  height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .album-card:hover {
   transform: translateY(-5px);
 }
 
+.album-cover-container {
+  position: relative;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.owner-checkbox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  transform: scale(1.1);
+}
+
 .album-cover {
   width: 200px;
   height: 200px;
-  object-fit: cover;   /* ensures consistent image scaling */
+  object-fit: cover;
 }
 
 body.dark-mode .album-card {
