@@ -1,6 +1,20 @@
 /* =============================
    Album Grid Layout
 ============================= */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 18px;
+}
+
+.carousel-btn {
+  flex: 0 0 auto;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
 .album-grid {
   display: grid;
   gap: 20px;
