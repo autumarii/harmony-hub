@@ -1,0 +1,31 @@
+/* =============================
+   Album Grid Layout
+============================= */
+.album-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  justify-items: center; /* center items in grid */
+  text-align: center;
+}
+
+/* Desktop & Tablet (≥768px) → 4 columns */
+@media (min-width: 768px) {
+  .album-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile (<768px) → 2 columns */
+@media (max-width: 767px) {
+  .album-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Very small screens (<480px) → 1 column */
+@media (max-width: 480px) {
+  .album-grid {
+    grid-template-columns: 1fr;
+  }
+}

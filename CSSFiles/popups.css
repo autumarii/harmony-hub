@@ -1,0 +1,62 @@
+/* =============================
+   Popup Styling
+============================= */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 8vh 8vw;
+  box-sizing: border-box;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 18px 20px;
+  border-radius: 10px;
+  width: min(320px, 84vw);
+  min-height: 400px;
+  max-height: 75vh;
+  overflow-y: auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+body.dark-mode .popup-content {
+  background: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.popup-content h2 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.popup-content p {
+  font-size: 0.9rem;
+  margin: 0.35rem 0;
+  line-height: 1.4;
+}
+
+.popup img,
+#popupCover {
+  width: min(200px, 70%);
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto 12px;
+  display: block;
+  object-fit: cover;
+}
+
+.artist-photo {
+  width: min(160px, 60%);
+  max-width: 160px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}

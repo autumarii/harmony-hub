@@ -1,0 +1,31 @@
+/* =============================
+   Global Styles
+============================= */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:rgb(248, 241, 183); /* yellow light mode */
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center; /* center all text */
+}
+
+body.dark-mode {
+  background-color: #0f4567;
+  color: #fffedc;
+}
+
+/* =============================
+   Logo Styling
+============================= */
+.logo {
+  display: block;
+  margin: 20px auto;
+  width: 30vw;          /* larger relative size */
+  max-width: 300px;     /* cap size */
+  min-width: 150px;     /* ensure readability */
+  height: auto;
+  object-fit: contain;
+}
+
